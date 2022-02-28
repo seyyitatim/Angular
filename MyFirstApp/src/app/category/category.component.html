@@ -1,1 +1,6 @@
-<p>category works!</p>
+<h3>{{title}}</h3>
+
+<div class="list-group">
+    <a class="list-group-item">TÜM ÜRÜNLER</a>
+    <a *ngFor="let category of categories" class="list-group-item">{{category.name | uppercase}}</a>
+</div>
