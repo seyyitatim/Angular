@@ -10,7 +10,13 @@ export class ProductService {
   constructor(private http: HttpClient) { }
   path = "http://localhost:3000/products";
 
-  getProducts(): Observable<Product[]> {
+  getProductsByCategoryId(categoryId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(this.path + "?categoryId=" + categoryId).pipe(
+      tap(data => console.log(JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+  getProducts(categoryId: number): Observable<Product[]> {
     return this.http.get<Product[]>(this.path).pipe(
       tap(data => console.log(JSON.stringify(data))),
       catchError(this.handleError)

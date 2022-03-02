@@ -19,7 +19,7 @@
     ],
     "categories":[
         {"id":1,"name":"bilgisayar"},
-        {"id":1,"name":"telefon"}
+        {"id":2,"name":"telefon"}
         
     ]
 }
