@@ -1,6 +1,6 @@
 <h3>{{title}}</h3>
 
-<a class="list-group-item">TÜM ÜRÜNLER</a>
+<a class="list-group-item" routerLink="products/category/0">TÜM ÜRÜNLER</a>
 <div *ngFor="let category of categories" class="list-group">
-    <a class="list-group-item" href="product/category/{{category.id}}">{{category.name | uppercase}}</a>
+    <a class="list-group-item" routerLink="products/category/{{category.id}}">{{category.name | uppercase}}</a>
 </div>

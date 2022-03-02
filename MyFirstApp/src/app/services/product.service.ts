@@ -16,7 +16,7 @@ export class ProductService {
       catchError(this.handleError)
     );
   }
-  getProducts(categoryId: number): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.path).pipe(
       tap(data => console.log(JSON.stringify(data))),
       catchError(this.handleError)

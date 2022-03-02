@@ -17,13 +17,16 @@ export class ProductComponent implements OnInit {
   filterText = "";
   title = "Ürün Listesi";
   products!: Product[];
+  categoryId!: number;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.productService.getProductsByCategoryId(params["categoryId"]).subscribe(data => {
-        this.products = data;
-      });
-    })
+      this.categoryId = params["categoryId"];
+      this.categoryId > 0 ?
+        this.productService.getProductsByCategoryId(this.categoryId).subscribe(data => { this.products = data; })
+        : this.productService.getProducts().subscribe(data => { this.products = data; });
+    });
+
   }
 
   addToCart(name: string) {
