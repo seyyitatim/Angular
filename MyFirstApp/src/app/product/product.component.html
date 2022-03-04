@@ -1,11 +1,11 @@
-<h3 *ngIf="products.length>0;else noProduct">{{title}}</h3>
+<!-- <h3 *ngIf="products.length>0;else noProduct">{{title}}</h3> -->
 
-<div class="mb-3">
+<div class="mb-1">
     <input [(ngModel)]="filterText" class="form-control" id="productName" placeholder="Arama metninizi giriniz">
     <small *ngIf="filterText" id="emailHelp" class="form-text">Aradığınız kelime: {{filterText}}</small>
 </div>
 
-<div class="row">
+<div class="row p-2">
     <ng-template #noProduct>
         <div class="alert alert-primary" role="alert">
             Bu Kategoride Ürün Yoktur
