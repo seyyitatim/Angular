@@ -1,25 +1,42 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "laptop",
-            "price": 2500,
-            "categoryId": 1,
-            "description": "Asus Zenbook",
-            "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-        },
-        {
-            "id": 1,
-            "name": "mouse",
-            "price": 25,
-            "categoryId": 2,
-            "description": "lucitik",
-            "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-        }
-    ],
-    "categories":[
-        {"id":1,"name":"bilgisayar"},
-        {"id":2,"name":"telefon"}
-        
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "laptop",
+      "price": 2500,
+      "categoryId": 1,
+      "description": "Asus Zenbook",
+      "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+    },
+    {
+      "id": 2,
+      "name": "mouse",
+      "price": 25,
+      "categoryId": 3,
+      "description": "lucitik",
+      "imageUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+    },
+    {
+      "name": "Iphone 8",
+      "description": "iphone 8 telefonu",
+      "imageUrl": "https://productimages.hepsiburada.net/s/31/500/10352775659570.jpg",
+      "price": 5000,
+      "categoryId": 2,
+      "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "bilgisayar"
+    },
+    {
+      "id": 2,
+      "name": "telefon"
+    },
+    {
+      "id": 3,
+      "name": "aksesuar"
+    }
+  ]
 }
