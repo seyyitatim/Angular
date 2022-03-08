@@ -22,7 +22,7 @@ export class ProductAddForms1Component implements OnInit {
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(data => {
       this.categories = data;
-    })
+    });
   }
 
   add(form: NgForm) {

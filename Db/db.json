@@ -23,6 +23,14 @@
       "price": 5000,
       "categoryId": 2,
       "id": 3
+    },
+    {
+      "name": "monster",
+      "description": "pc",
+      "imageUrl": "https://mcdn01.gittigidiyor.net/72161/721617657_0.jpg",
+      "price": 13333,
+      "categoryId": 1,
+      "id": 4
     }
   ],
   "categories": [
