@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { asyncScheduler, AsyncSubject, BehaviorSubject, bindCallback, combineLatest, concat, defer, empty, forkJoin, from, fromEvent, generate, iif, interval, mapTo, merge, Observable, observeOn, of, partition, race, range, ReplaySubject, Subject, throwError, timer, zip } from 'rxjs';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { asyncScheduler, AsyncSubject, audit, auditTime, BehaviorSubject, bindCallback, combineLatest, concat, debounce, debounceTime, defer, distinct, distinctUntilChanged, distinctUntilKeyChanged, elementAt, empty, filter, first, forkJoin, from, fromEvent, generate, ignoreElements, iif, interval, last, map, mapTo, merge, Observable, observeOn, of, partition, race, range, ReplaySubject, sample, sampleTime, single, Subject, throwError, timer, zip } from 'rxjs';
 import { ajax } from "rxjs/ajax"
 import * as $ from "jquery";
 
@@ -9,8 +9,21 @@ declare var jQuery: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
+  ngAfterViewInit(): void { // component ağaya kalktıktan sonra tetiklenen metottur.
+    // //debounce
+    // const obs = fromEvent(this.txt.nativeElement, "keyup");
+    // obs.pipe(debounce(x => interval(100))).subscribe(this.writeConsole);
+
+
+    // //debounceTime -> debounce operatörünün parametreli halidir.
+    // const obs = fromEvent(this.txt.nativeElement, "keyup");
+    // obs.pipe(debounceTime(100)).subscribe(this.writeConsole);
+  }
   title = 'AngularWithRxJS';
+
+  @ViewChild("txt")
+  txt!: ElementRef;
 
   ngOnInit(): void {
     // // observable 
@@ -232,11 +245,100 @@ export class AppComponent implements OnInit {
 
     // zip(obs1, obs2, obs3).subscribe(this.writeConsole);
 
-    // pipe -> Kod içerisinde yaygın olarak kullanılan birden fazla operatör dizisi varsa eğer pipe fonksiyonu kullanılabilir
-    const obs = of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    // // pipe -> Kod içerisinde yaygın olarak kullanılan birden fazla operatör dizisi varsa eğer pipe fonksiyonu kullanılabilir
+    // const obs = of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
-    
+    // obs.pipe(filter(x => x % 3 == 0), map(x => x + " değeri")).subscribe(this.writeConsole);
 
+    // // audit -> bir süre için Observable akışındaki değerler üzerinde işlem yapmamıza izin verir ve ardından en sonuncu(yeni) değerleri yayınlar.
+    // const obs1 = interval(1000);
+    // const obs2 = obs1.pipe(audit(x => interval(2000)), map(x => x + ' değeri'));
+
+    // obs2.subscribe(this.writeConsole);
+
+    // // auditTime -> audit operatörünün parametreli halidir.
+    // const obs1 = interval(1000);
+    // const obs2 = obs1.pipe(auditTime(2000), map(x => x + ' değeri'));
+
+    // obs2.subscribe(this.writeConsole);
+
+    // debounce -> akıştaki değerlerin zama aşımı süresini belirleyebilmek için kullanılan bir operatördür.
+    // const obs = fromEvent(document.getElementsByTagName("button"), "click");
+    // obs.pipe(debounce(x => interval(250))).subscribe(data => {
+    //   this.writeConsole("Tıklandı...");
+    // });
+    // Devamı ngAfterViewInit'te
+
+    // // distinct -> Akıştaki verilerden tekrar edenleri tekil olarak döndüren operatördür.
+    // const obs = of(1, 2, 3, 4, 4, 4, 5, 5, 5, 2);
+    // obs.pipe(distinct(x => x)).subscribe(this.writeConsole); // distinct in içini doldurmadan da çalışabilir fakat obje olmadığına dikkat et
+
+    // distinctUntilChanged -> Akıştaki verileri değişiklik olana kadar tekilleştiren operatördür.
+    // örnek  1,1,2,2,2,1,1,2,2,3,3,4
+    //        1,2,1,2,3,4
+    // const obs = of(1, 1, 2, 2, 2, 1, 1, 2, 2, 3, 3, 4);
+
+    // obs.pipe(distinctUntilChanged()).subscribe(this.writeConsole);
+
+    // distinctUntilKeyChanged -> Akıştaki objelerden verilen key'e(anahtar değere göre) değişiklik olana kadar tekilleştiren operatördür.
+    // const obs = of(
+    //   { name: "ali", age: 22 },
+    //   { name: "ahmet", age: 22 },
+    //   { name: "ali", age: 23 },
+    //   { name: "ali", age: 24 },
+    //   { name: "ahmet", age: 22 },
+    //   { name: "ali", age: 22 });
+
+    // obs.pipe(distinctUntilKeyChanged("name")).subscribe(this.writeConsole);
+    // obs.pipe(distinctUntilChanged((q, p) => q.name == p.name)).subscribe(this.writeConsole); // üstteki ve alttaki aynı işlevi görmektedir.
+
+    // // elementAt -> Akıştaki verilerden index numarası verileni döndüren operatördür.
+    // const obs = of(1, 2, 3, 4);
+    // obs.pipe(elementAt(2)).subscribe(this.writeConsole);
+
+    // // filter -> Observable'da ki verileri belirli bir koşula göre yayan operatördür. Filtreleme işlemi gerçekleştirir.
+    // const obs = of(1, 2, 3, 4, 5, 6);
+    // obs.pipe(filter(x => x > 3)).subscribe(this.writeConsole);
+
+    // // first -> Observable'da ki ilk değeri döner.
+    // const obs = of(1, 2, 3, 4, 5, 6);
+    // obs.pipe(first()).subscribe(this.writeConsole);
+
+    // // ignoreElements -> Observable tarafından yayılan tüm ögelerini yok sayar, görmezden gelir. Yalnızca complete ve error çıktılarını yakalar.
+    // const obs = of(1, 2, 3, 4, 5, 6);
+    // obs.pipe(ignoreElements())
+    // .subscribe(this.writeConsole,
+    //   error => {
+    //     this.writeConsole(error)
+    //   },
+    //   () => {
+    //     this.writeConsole("The end")
+    //   });
+    // .subscribe({
+    //   error: error => this.writeConsole(error),
+    //   complete: () => this.writeConsole("akış tamamlandı.")
+    // })
+
+    // // last -> Observable'da ki son değeri döner.
+    // const obs = of(1, 2, 3, 4, 5, 6);
+    // obs.pipe(last()).subscribe(this.writeConsole);
+
+    // // sample -> Periyodik zaman aralıkları içinde bir Observable tarafından yayılan en son ögeyi yayınlar.
+    // const second = interval(1000);
+    // const obs = fromEvent(document, "click");
+    // second.pipe(sample(obs)).subscribe(this.writeConsole);
+
+    // // sampleTime -> Periyodik zaman aralıkları içinde bir Observable tarafından yayılan en son ögeyi yayınlar.
+    // const obs = fromEvent(document, "click");
+    // obs.pipe(sampleTime(1000)).subscribe(this.writeConsole);
+
+    // // single -> Bildirilen şarta uygun birden fazla değer varsa hata verir yoksa undefined dönecektir. Verile şarta uygun sadece tek bir değer döndürmelidir.
+    // const obs = of(1, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5, 6);
+    // const obs = range(1, 10);
+    // obs.pipe(single(x => x > 5)).subscribe({
+    //   next: this.writeConsole,
+    //   error: this.writeConsole
+    // });
 
   }
 
