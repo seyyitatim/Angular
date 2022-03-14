@@ -1,0 +1,30 @@
+{
+    "Articles": [
+        {
+            "id": 1,
+            "title": "Abc",
+            "summary": "lorem ipsum",
+            "context": "Lorem ipsum falan filan",
+            "date": "abc",
+            "picture": "",
+            "categoryId": 1,
+            "viewCount": 0
+        }
+    ],
+    "Categories": [
+        {
+            "id": 1,
+            "upperCategory": 0,
+            "name": "Doğa"
+        }
+    ],
+    "Comments": [
+        {
+            "id": 1,
+            "articleId": 1,
+            "name": "abc",
+            "context": "çok iyi falan filan",
+            "date": ""
+        }
+    ]
+}
