@@ -10,9 +10,12 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { MainNavComponent } from './nav/main-nav/main-nav.component';
+import { AdminNavComponent } from './nav/admin-nav/admin-nav.component';
+import { MenuCategoryComponent } from './components/menu-category/menu-category.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, ContactComponent, MainLayoutComponent, AdminLayoutComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent, ContactComponent, MainLayoutComponent, AdminLayoutComponent, MainNavComponent, AdminNavComponent, MenuCategoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

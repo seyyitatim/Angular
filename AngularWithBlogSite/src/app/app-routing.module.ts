@@ -11,24 +11,12 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     children: [
-      {
-        path: '',
-        component: HomeComponent,
-      },
-      {
-        path: 'hakkimizda',
-        component: AboutComponent,
-      },
-      {
-        path: 'iletisim',
-        component: ContactComponent,
-      },
+      { path: '', component: HomeComponent },
+      { path: 'hakkimizda', component: AboutComponent },
+      { path: 'iletisim', component: ContactComponent },
     ],
   },
-  {
-    path: 'Admin',
-    component: AdminLayoutComponent,
-  },
+  { path: 'Admin', component: AdminLayoutComponent },
 ];
 
 @NgModule({
