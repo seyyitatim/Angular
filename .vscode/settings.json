@@ -1,7 +1,7 @@
 {
-    "cSpell.language": "en,tr",
-    "cSpell.words": [
-        "dataları",
-        "Milisaniye"
-    ]
+  "cSpell.language": "en,tr",
+  "cSpell.words": ["dataları", "Milisaniye"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true
 }
